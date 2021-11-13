@@ -7,7 +7,7 @@ class Gallery(models.Model):
     image = models.ImageField(
         upload_to="uploads/images", null=True, blank=True)
     title = models.CharField(max_length=500, null=False, blank=False)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     category = models.CharField(max_length=200, null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)
     created_at = models.DateField(auto_now_add=True)

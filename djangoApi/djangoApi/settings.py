@@ -25,7 +25,7 @@ SECRET_KEY = 'mssf_f@m@+p-4ux&@3fhs!21yo03y8tk*$2=u_4f-&_pqx*v5*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -141,14 +141,10 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
         'knox.auth.TokenAuthentication'
-    ]
+    ],
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-ALLOWED_HOSTS = [
-    "*"
-]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
