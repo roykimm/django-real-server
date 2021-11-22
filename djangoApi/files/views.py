@@ -61,16 +61,22 @@ def download_image(request, file_name):
 @api_view(['POST'])
 def download_tube(request):
 
+    print(request.data['url'])
     url = request.data['url']
     if not url:
         response = HttpResponse("url을 입력하여 주세요.")
         return response
 
-    yt = pytube.YouTube(url)
+    print("url : " + url)
+    yt = pytube.YouTube("https://www.youtube.com/watch?v=3WOwa0lWEz4")
 
     vids = yt.streams.all()
+    for i in range(len(vids)):
+        print(i, '. ', vids[i])
+
     parent_dir = BASE_DIR + "/media/tube/"  # 다운받을 경로
 
+    print("parent_dir :" + parent_dir)
     vnum = 1
     vids[vnum].download(parent_dir)  # 다운로드 하기
     default_filename = vids[vnum].default_filename
